@@ -8,7 +8,8 @@ comb_sigma <- function(med.model, out.model, treat, mediator_name,
     SigmaT <- rbind(cbind(SigmaT,rep(0,nrow(SigmaT))),rep(0,nrow(SigmaT)+1))
     dimnames(SigmaT)[[1]][nrow(SigmaT)] <- paste0(treat, ":", mediator_name)
     dimnames(SigmaT)[[2]][nrow(SigmaT)] <- paste0(treat, ":", mediator_name)
-  } else if (out.reg == "coxph") {
+  }
+  if (out.reg == "coxph") {
     SigmaT <- rbind(cbind(rep(0,nrow(SigmaT)),SigmaT),rep(0,nrow(SigmaT)+1))
     dimnames(SigmaT)[[1]][nrow(SigmaT)] <- "(Intercept)"
     dimnames(SigmaT)[[2]][1] <- "(Intercept)"
