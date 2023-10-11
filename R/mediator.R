@@ -48,7 +48,7 @@ mediator <- function(...) {
 
 #' @rdname mediator
 #' @export
-mediator.default <- function(data, out.model, med.model, treat, a = 1, a_star = 0,
+mediator.default <- function(data, out.model, med.model, treat, mediator_name = NULL, a = 1, a_star = 0,
                              m = 0, boot_rep = 0, pm_ci = FALSE, ...){
 
   # identifying mediator variable if not provided
