@@ -22,7 +22,7 @@ cov_pred <- function(treat, mediator_name, med.model, data){
     dplyr::select_if(purrr::negate(is.numeric)) %>%
     purrr::map_chr(~{
       ux <- unique(.x)
-      ux[which.max(tabulate(match(.x, ux)))]
+      as.character(ux[which.max(tabulate(match(.x, ux)))])
     })
 
   # combine means and modes into data frame -----------------------------------
@@ -62,3 +62,4 @@ cov_pred <- function(treat, mediator_name, med.model, data){
   return(list(betasum = betasum, betamean = betamean))
 
 }
+

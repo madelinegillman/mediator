@@ -24,7 +24,7 @@ test_that("continuous outcome and mediator match SAS macro",{
 
   var_set <- unique(c(out_vars,
                       names(attr(med.model$terms,"dataClasses"))))
-  data <- data %>% dplyr::select(var_set)
+  data <- data %>% dplyr::select(all_of(var_set))
 
   betas <- stats::coef(med.model) # coefficients from mediation model
   beta_info <- cov_pred(treat, mediator, med.model, data)
@@ -132,7 +132,7 @@ test_that("binary outcome and continuous mediator match SAS macro",{
 
   var_set <- unique(c(out_vars,
                       names(attr(med.model$terms,"dataClasses"))))
-  data <- data %>% dplyr::select(var_set)
+  data <- data %>% dplyr::select(all_of(var_set))
 
   betas <- stats::coef(med.model) # coefficients from mediation model
   beta_info <- cov_pred(treat, mediator, med.model, data)
@@ -239,7 +239,7 @@ test_that("continuous outcome and binary mediator match SAS macro",{
 
   var_set <- unique(c(out_vars,
                       names(attr(med.model$terms,"dataClasses"))))
-  data <- data %>% dplyr::select(var_set)
+  data <- data %>% dplyr::select(all_of(var_set))
 
   betas <- stats::coef(med.model) # coefficients from mediation model
   # beta_info <- cov_pred(cmeans, cmodes, treat, mediator, med.model, data)
@@ -348,7 +348,7 @@ test_that("binary outcome and mediator match SAS macro",{
 
   var_set <- unique(c(out_vars,
                       names(attr(med.model$terms,"dataClasses"))))
-  data <- data %>% dplyr::select(var_set)
+  data <- data %>% dplyr::select(all_of(var_set))
 
   betas <- stats::coef(med.model) # coefficients from mediation model
   # beta_info <- cov_pred(cmeans, cmodes, treat, mediator, med.model, data)
