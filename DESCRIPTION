@@ -25,7 +25,7 @@ Imports:
     furrr,
     rsample,
     rlang
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.3
 Depends: R (>= 2.10)
 Suggests: 
     testthat (>= 2.1.0),

@@ -12,6 +12,7 @@ mediator(...)
   out.model,
   med.model,
   treat,
+  mediator_name = NA,
   a = 1,
   a_star = 0,
   m = 0,
@@ -33,6 +34,11 @@ Can be of class 'glm','lm'.}
 
 \item{treat}{A character string indicating the name of the
 treatment/exposure variable used.}
+
+\item{mediator_name}{A character string indicating the name of the mediator
+variable. If not provided, will obtain from formula call. If formula is
+created outside of model call (i.e. with the formula() function), mediator
+name must be specified.}
 
 \item{a}{A numeric value indicating the exposure level. Default = 1}
 
