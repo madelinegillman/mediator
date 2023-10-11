@@ -12,6 +12,10 @@
 #'   Can be of class 'glm','lm'.
 #' @param treat A character string indicating the name of the
 #'   treatment/exposure variable used.
+#' @param mediator_name A character string indicating the name of the mediator
+#'    variable. If not provided, will obtain from formula call. If formula is
+#'    created outside of model call (i.e. with the formula() function), mediator
+#'    name must be specified.
 #' @param a A numeric value indicating the exposure level. Default = 1
 #' @param a_star A numeric value indicating the compared exposure level.
 #'   Default = 0.
@@ -47,8 +51,10 @@ mediator <- function(...) {
 mediator.default <- function(data, out.model, med.model, treat, a = 1, a_star = 0,
                              m = 0, boot_rep = 0, pm_ci = FALSE, ...){
 
-  # identifying mediator variable
-  mediator_name <- stringr::str_trim(gsub("~.*","",as.character(med.model$call)[2]))
+  # identifying mediator variable if not provided
+  if(is.na(mediator_name)) {
+    mediator_name <- stringr::str_trim(gsub("~.*","",as.character(med.model$call)[2]))
+  }
 
   # identifying out model type
   out.reg <- if (class(out.model)[1] == "coxph") {
